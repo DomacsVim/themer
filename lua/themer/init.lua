@@ -34,9 +34,9 @@ function C.load_theme(theme)
   local select_theme = C.get_theme(theme)
 
   xpcall(function()
-    require(select_theme).load()
+    vim.cmd('colorscheme ' .. select_theme)
     end, function()
-      error('[ERROR] No such palette for theme :(')
+      error('[ERROR] The theme was not set :(')
     end)
 end
 
