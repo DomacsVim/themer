@@ -11,7 +11,7 @@ M.base = {
 
   Boolean = { fg = c.orange },
   Character = { fg = c.green },
-  ColorColumn = { bg = c.none },
+  ColorColumn = { bg = c.dark },
   Comment = { fg = c.gray, style = 'italic' },
   Conceal = { fg = c.accent, bg = config.transparent_background and 'NONE' or c.bg },
   Conditional = { fg = c.purple },
@@ -104,7 +104,7 @@ M.base = {
   Type = { fg = c.yellow },
   Typedef = { fg = c.purple },
   Variable = { fg = c.cyan },
-  VertSplit = { fg = c.bg, bg = c.dark },
+  VertSplit = { fg = c.bg },
   Visual = { bg = c.ui_blue },
   VisualNOS = { bg = c.dark },
   WarningMsg = { fg = c.error_red, bg = c.bg },
