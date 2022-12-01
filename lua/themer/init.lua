@@ -31,10 +31,11 @@ function C.get_palette(theme)
 end
 
 function C.load_theme(theme)
-  local select_theme = C.get_theme(theme)
-
+  if theme ~= '' or theme ~= nil then
+    theme = dvim.colorscheme
+  end
   xpcall(function()
-    require(select_theme).load()
+    vim.api.nvim_command('colorscheme ' .. theme)
     end, function()
       error('[ERROR] The theme was not set :(')
     end)
