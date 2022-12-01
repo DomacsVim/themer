@@ -11,7 +11,7 @@ M.base = {
 
   Boolean = { fg = c.orange },
   Character = { fg = c.green },
-  ColorColumn = { bg = c.dark },
+  ColorColumn = { bg = c.none },
   Comment = { fg = c.gray, style = 'italic' },
   Conceal = { fg = c.accent, bg = config.transparent_background and 'NONE' or c.bg },
   Conditional = { fg = c.purple },
