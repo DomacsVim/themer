@@ -93,10 +93,11 @@ end
 function M.setup(user_conf)
 	-- Parsing user config
 	user_conf = user_conf or {}
-	M.options = vim.tbl_deep_extend("keep", M.options, user_conf)
 	M.options.highlight_overrides.all = user_conf.custom_highlights or M.options.highlight_overrides.all
 
 	M.flavour = M.options.flavour or vim.g.catppuccin_flavour or "mocha"
+
+	M.options = vim.tbl_deep_extend("keep", user_conf, M.options)
 
 	if not M.flavours[M.flavour] then
 		vim.notify(
