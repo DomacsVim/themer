@@ -5,16 +5,8 @@
 --   :::::::::::   ::::::::  :   ::::::    :   :::       :   :         :
 --   `:::::::::'   `::::::' .'   `:::::   .'   `::.     .'   `.       .'
 --     `':::''       `'::'-'       `'::.-'       `':..-'       `-...-'
-
+--
 -- Colorscheme name:    solarized.nvim
--- Description:         Port of VSCode's Solarized colorscheme for NeoVim
+-- Description:         Port of VSCode's Moonlight colorscheme for NeoVim
 -- Author:              https://github.com/shaunsingh
-
-local util = require('themer.themes.solarized.util')
-
--- Load the theme
-local set = function ()
-    util.load()
-end
-
-return { set = set }
+require('themer.themes.solarized-light').set()

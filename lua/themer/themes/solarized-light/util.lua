@@ -1,5 +1,5 @@
 local util = {}
-local solarized = require('themer.themes.solarized.theme')
+local solarized = require('themer.themes.solarized-light.theme')
 
 -- Go trough the table and highlight the group with the color values
 util.highlight = function (group, color)
@@ -26,7 +26,7 @@ end
 util.contrast = function ()
     vim.cmd [[augroup Solarized]]
     vim.cmd [[  autocmd!]]
-    vim.cmd [[  autocmd ColorScheme * lua require("themer.themes.solarized.util").onColorScheme()]]
+    vim.cmd [[  autocmd ColorScheme * lua require("themer.themes.solarized-light.util").onColorScheme()]]
     vim.cmd [[  autocmd TermOpen * setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]]
     vim.cmd [[  autocmd FileType packer setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]]
     vim.cmd [[  autocmd FileType qf setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]]

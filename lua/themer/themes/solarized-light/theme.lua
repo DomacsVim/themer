@@ -1,4 +1,4 @@
-local solarized = require("themes.themes.solarized.colors")
+local solarized = require("themes.themes.solarized-light.colors")
 
 local theme = {}
 
