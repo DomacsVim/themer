@@ -45,7 +45,7 @@ function C.config_theme(theme, configs)
   local select_theme = C.get_theme(theme)
 
   xpcall(function()
-    require(select_theme).setup({configs})
+    require(select_theme).setup(configs)
     end, function()
       error('[ERROR] No such palette for theme :(')
     end)
