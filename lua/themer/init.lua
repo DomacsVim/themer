@@ -1,5 +1,7 @@
 local C = {}
 
+themer = {themes = {}}
+
 function C.get_theme(theme)
   local theme_name
 
