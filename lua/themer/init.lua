@@ -31,10 +31,7 @@ end
 function C.load_theme(theme)
   local select_theme = C.get_theme(theme)
 
-  local status_ok, _ = pcall(require, select_theme).load()
-  if not status_ok then
-    error('[ERROR] No such palette for theme :(')
-  end
+  require(select_theme).load()
 end
 
 return C
