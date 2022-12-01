@@ -16,7 +16,7 @@ end
 
 -- Only define Solarized if it's the active colorshceme
 function util.onColorScheme()
-  if vim.g.colors_name ~= "solarized" then
+  if vim.g.colors_name ~= "solarized-light" then
     vim.cmd [[autocmd! Solarized]]
     vim.cmd [[augroup! Solarized]]
   end
@@ -40,7 +40,7 @@ function util.load()
     if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
     vim.o.background = "dark"
     vim.o.termguicolors = true
-    vim.g.colors_name = "solarized"
+    vim.g.colors_name = "solarized-light"
 
     -- Load plugins, treesitter and lsp async
     local async
