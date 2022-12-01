@@ -31,7 +31,11 @@ end
 function C.load_theme(theme)
   local select_theme = C.get_theme(theme)
 
-  require(select_theme).load()
+  xpcall(function()
+    require(select_theme).load()
+    end, function()
+      error('[ERROR] No such palette for theme :(')
+    end)
 end
 
 return C
