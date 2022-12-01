@@ -1,0 +1,161 @@
+local is_vim = vim.fn.has "nvim" ~= 1
+if is_vim then require "themer.themes.catppuccin.lib.vim" end
+
+local M = {
+	options = {
+		background = {
+			light = "latte",
+			dark = "mocha",
+		},
+		compile_path = vim.fn.stdpath "cache" .. "/catppuccin",
+		transparent_background = false,
+		term_colors = false,
+		dim_inactive = {
+			enabled = false,
+			shade = "dark",
+			percentage = 0.15,
+		},
+		no_italic = false,
+		no_bold = false,
+		styles = {
+			comments = { "italic" },
+			conditionals = { "italic" },
+			loops = {},
+			functions = {},
+			keywords = {},
+			strings = {},
+			variables = {},
+			numbers = {},
+			booleans = {},
+			properties = {},
+			types = {},
+			operators = {},
+		},
+		integrations = {
+			treesitter = not is_vim,
+			cmp = true,
+			gitsigns = true,
+			telescope = true,
+			nvimtree = true,
+			dashboard = true,
+			markdown = true,
+			indent_blankline = {
+				enabled = true,
+				colored_indent_levels = false,
+			},
+			native_lsp = {
+				enabled = true,
+				virtual_text = {
+					errors = { "italic" },
+					hints = { "italic" },
+					warnings = { "italic" },
+					information = { "italic" },
+				},
+				underlines = {
+					errors = { "underline" },
+					hints = { "underline" },
+					warnings = { "underline" },
+					information = { "underline" },
+				},
+			},
+		},
+		color_overrides = {},
+		highlight_overrides = {},
+	},
+	flavours = { latte = 1, frappe = 2, macchiato = 3, mocha = 4 },
+	path_sep = jit and (jit.os == "Windows" and "\\" or "/") or package.config:sub(1, 1),
+}
+
+function M.compile()
+	for flavour, _ in pairs(M.flavours) do
+		require("themer.themes.catppuccin.lib." .. (is_vim and "vim." or "") .. "compiler").compile(flavour)
+	end
+end
+
+local lock = false -- Avoid g:colors_name reloading
+
+function M.load(flavour)
+	if lock then return end
+	M.flavour = flavour
+		or (vim.g.colors_name and M.options.background[is_vim and vim.eval "&background" or vim.o.background] or M.flavour)
+		or "mocha"
+	local compiled_path = M.options.compile_path .. M.path_sep .. M.flavour .. "_compiled.lua"
+	lock = true
+	local f = loadfile(compiled_path)
+	if not f then
+		M.compile()
+		f = loadfile(compiled_path)
+	end
+	f()
+	lock = false
+end
+
+function M.setup(user_conf)
+	-- Parsing user config
+	user_conf = user_conf or {}
+	M.options = vim.tbl_deep_extend("keep", user_conf, M.options)
+	M.options.highlight_overrides.all = user_conf.custom_highlights or M.options.highlight_overrides.all
+
+	M.flavour = M.options.flavour or vim.g.catppuccin_flavour or "mocha"
+
+	if not M.flavours[M.flavour] then
+		vim.notify(
+			string.format(
+				"Catppuccin (error): Invalid flavour '%s', flavour must be 'latte', 'frappe', 'macchiato' or 'mocha'",
+				M.flavour
+			),
+			vim.log.levels.ERROR
+		)
+		return
+	end
+
+	-- Caching configuration
+	local cached_path = M.options.compile_path .. M.path_sep .. "date.txt"
+
+	local file = io.open(cached_path)
+	local cached = nil
+	if file then
+		cached = file:read()
+		file:close()
+	end
+
+	local git_path = debug.getinfo(1).source:sub(2, -24) .. ".git" .. M.path_sep .. "ORIG_HEAD"
+	local git = vim.fn.getftime(git_path) -- 2x faster vim.loop.fs_stat
+	local hash = require("catppuccin.lib.hashing").hash(user_conf) .. (git == -1 and git_path or git) -- no .git in /nix/store -> cache path
+
+	if cached ~= hash then
+		M.compile()
+		file = io.open(cached_path, "wb")
+		if file then
+			file:write(hash)
+			file:close()
+		end
+	end
+end
+
+if is_vim then return M end
+
+vim.api.nvim_create_user_command("Catppuccin", function(inp)
+	if not M.flavours[inp.args] then
+		vim.notify(
+			"Catppuccin (error): Invalid flavour '"
+				.. inp.args
+				.. "', flavour must be 'latte', 'frappe', 'macchiato' or 'mocha'",
+			vim.log.levels.ERROR
+		)
+		return
+	end
+	vim.api.nvim_command("colorscheme catppuccin-" .. inp.args)
+end, {
+	nargs = 1,
+	complete = function(line)
+		return vim.tbl_filter(function(val) return vim.startswith(val, line) end, vim.tbl_keys(M.flavours))
+	end,
+})
+
+vim.api.nvim_create_user_command("CatppuccinCompile", function()
+	M.compile()
+	vim.notify("Catppuccin (info): compiled cache!", vim.log.levels.INFO)
+end, {})
+
+return M
