@@ -41,7 +41,7 @@ function M.toggle()
     vim.api.nvim_command('colorscheme onedark')
 end
 
-local default_config = {
+themer.themes.onedark = {
     -- Main options --
     style = 'dark',    -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
     toggle_style_key = nil,
@@ -81,7 +81,7 @@ local default_config = {
 ---@param opts table: a table containing options
 function M.setup(opts)
     if not vim.g.onedark_config or not vim.g.onedark_config.loaded then    -- if it's the first time setup() is called
-        vim.g.onedark_config = vim.tbl_deep_extend('keep', vim.g.onedark_config or {}, default_config)
+        vim.g.onedark_config = vim.tbl_deep_extend('keep', vim.g.onedark_config or {}, themer.themes.onedark)
         M.set_options('loaded', true)
         M.set_options('toggle_style_index', 0)
     end
