@@ -28,4 +28,9 @@ function C.get_palette(theme)
   end
 end
 
+function C.load_theme(theme)
+  ---@diagnostic disable-next-line: undefined-field
+  C.get_theme(theme).load()
+end
+
 return C
