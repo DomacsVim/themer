@@ -84,7 +84,7 @@ function M.setup()
     TabLineFill = { bg = c.black }, -- tab pages line, where there are no labels
     TabLineSel = { fg = c.black, bg = c.blue }, -- tab pages line, active tab page label
     Title = { fg = c.blue, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
-    Visual = { bg = c.bg_visual }, -- Visual mode selection
+    Visual = { fg = c.bg_visual }, -- Visual mode selection
     VisualNOS = { bg = c.bg_visual }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg = { fg = c.warning }, -- warning messages
     Whitespace = { fg = c.fg_gutter }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -344,7 +344,7 @@ function M.setup()
       fg = options.styles.sidebars == "transparent" and c.border or c.bg_sidebar,
       bg = c.bg_sidebar,
     },
-    NvimTreeNormalNC = { fg = c.fg_sidebar },
+    NvimTreeNormalNC = { fg = c.fg_sidebar, bg = c.bg_sidebar },
     NvimTreeRootFolder = { fg = c.blue, bold = true },
     NvimTreeGitDirty = { fg = c.git.change },
     NvimTreeGitNew = { fg = c.git.add },
@@ -357,8 +357,8 @@ function M.setup()
     NvimTreeFolderIcon = { bg = c.none, fg = c.blue },
     -- NvimTreeFolderName= { fg = c.fg_float },
 
-    NeoTreeNormal = { fg = c.fg_sidebar },
-    NeoTreeNormalNC = { fg = c.fg_sidebar },
+    NeoTreeNormal = { fg = c.fg_sidebar, bg = c.bg_sidebar },
+    NeoTreeNormalNC = { fg = c.fg_sidebar, bg = c.bg_sidebar },
 
     -- Fern
     FernBranchText = { fg = c.blue },
