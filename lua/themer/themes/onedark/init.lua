@@ -97,7 +97,7 @@ function M.setup(opts)
 end
 
 function M.load()
-  vim.api.nvim_command('colorscheme onedark')
+  return vim.api.nvim_command('colorscheme onedark')
 end
 
 return M
