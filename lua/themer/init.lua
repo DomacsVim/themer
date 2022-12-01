@@ -29,8 +29,12 @@ function C.get_palette(theme)
 end
 
 function C.load_theme(theme)
-  ---@diagnostic disable-next-line: undefined-field
-  C.get_theme(theme).load()
+  local select_theme = C.get_theme(theme)
+
+  local status_ok, _ = pcall(require, select_theme).load()
+  if not status_ok then
+    error('[ERROR] No such palette for theme :(')
+  end
 end
 
 return C
