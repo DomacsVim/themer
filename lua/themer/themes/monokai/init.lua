@@ -702,39 +702,27 @@ local default_config = {
   italics = true,
 }
 
-M.setup = function(configs)
+M.setup = function(config)
   vim.cmd('hi clear')
   if vim.fn.exists('syntax_on') then
     vim.cmd('syntax reset')
   end
   vim.o.background = 'dark'
   vim.o.termguicolors = true
-  vim.g.monokai = vim.tbl_deep_extend('keep', vim.g.monokai or {}, default_config)
-  if configs then
-    vim.g.monokai = vim.tbl_deep_extend('force', vim.g.monokai, configs)
-  end
-  local style
-  if configs.style == 'classic' then
-    style = M.classic
-  elseif configs.style == 'pro' then
-    style = M.pro
-  elseif configs.style == 'ristretto' then
-    style = M.ristretto
-  elseif configs.style == 'soda' then
-    style = M.soda
-  end
-  local used_palette = style or M.classic
-  vim.g.colors_name = 'monokai'
+  config = config or {}
+  config = vim.tbl_deep_extend('keep', config, default_config)
+  local used_palette = config.palette or M.classic
+  vim.g.colors_name = used_palette.name
   local syntax = M.load_syntax(used_palette)
-  syntax = vim.tbl_deep_extend('keep', configs.custom_hlgroups, syntax)
-  local highlight = highlighter(configs)
+  syntax = vim.tbl_deep_extend('keep', config.custom_hlgroups, syntax)
+  local highlight = highlighter(config)
   for group, colors in pairs(syntax) do
     highlight(group, colors)
   end
   local plugin_syntax = M.load_plugin_syntax(used_palette)
   plugin_syntax = vim.tbl_deep_extend(
     'keep',
-    configs.custom_hlgroups,
+    config.custom_hlgroups,
     plugin_syntax
   )
   for group, colors in pairs(plugin_syntax) do
