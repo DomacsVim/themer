@@ -709,8 +709,16 @@ M.setup = function(config)
   vim.o.background = 'dark'
   vim.o.termguicolors = true
   config = vim.tbl_deep_extend('keep', config or {}, default_config)
+  if config.style == 'classic' then
+    config.style = M.classic
+  elseif config.style == 'pro' then
+    config.style = M.pro
+  elseif config.style == 'ristretto' then
+    config.style = M.ristretto
+  elseif config.style == 'soda' then
+    config.style = M.soda
+  end
   local used_palette = config.style or M.classic
-  print(config.style)
   vim.g.colors_name = 'monokai'
   local syntax = M.load_syntax(used_palette)
   syntax = vim.tbl_deep_extend('keep', config.custom_hlgroups, syntax)
