@@ -702,6 +702,8 @@ local default_config = {
   italics = true,
 }
 
+M.config = {}
+
 M.setup = function(config)
   vim.cmd('hi clear')
   if vim.fn.exists('syntax_on') then
@@ -709,8 +711,7 @@ M.setup = function(config)
   end
   vim.o.background = 'dark'
   vim.o.termguicolors = true
-  config = config or {}
-  config = vim.tbl_deep_extend('keep', config, default_config)
+  M.config = vim.tbl_deep_extend('keep', config, default_config)
   local used_palette = config.style
   vim.g.colors_name = used_palette.name
   local syntax = M.load_syntax(used_palette)
