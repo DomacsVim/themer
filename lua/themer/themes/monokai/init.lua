@@ -709,7 +709,6 @@ M.setup = function(config)
   end
   vim.o.background = 'dark'
   vim.o.termguicolors = true
-  config = config or {}
   local used_palette
   if config.style == 'classic' then
     used_palette = M.classic
