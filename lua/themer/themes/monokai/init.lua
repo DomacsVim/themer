@@ -708,7 +708,7 @@ M.setup = function(config)
   end
   vim.o.background = 'dark'
   vim.o.termguicolors = true
-  config = vim.tbl_deep_extend('keep', config, default_config)
+  config = vim.tbl_deep_extend('keep', config or {}, default_config)
   local used_palette = config.style or M.classic
   vim.g.colors_name = 'monokai'
   local syntax = M.load_syntax(used_palette)
