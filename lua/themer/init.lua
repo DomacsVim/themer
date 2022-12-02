@@ -31,9 +31,6 @@ function C.get_palette(theme)
 end
 
 function C.load_theme(theme)
-  if theme ~= '' or theme ~= nil then
-    theme = dvim.colorscheme
-  end
   xpcall(function()
     vim.api.nvim_command('colorscheme ' .. theme)
     end, function()
