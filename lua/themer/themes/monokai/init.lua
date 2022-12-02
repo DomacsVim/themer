@@ -722,7 +722,7 @@ M.setup = function(config)
     style = M.soda
   end
   local used_palette = style or M.classic
-  vim.g.colors_name = used_palette.name
+  vim.g.colors_name = 'monokai'
   local syntax = M.load_syntax(used_palette)
   syntax = vim.tbl_deep_extend('keep', config.custom_hlgroups, syntax)
   local highlight = highlighter(config)
