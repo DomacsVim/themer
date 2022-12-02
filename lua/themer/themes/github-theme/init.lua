@@ -10,9 +10,6 @@ init.setup = function(user_config)
   if user_config then
     config.apply_configuration(user_config)
   end
-
-  -- Load colorscheme
-  util.load(theme.setup(config.schema))
 end
 
 return init
