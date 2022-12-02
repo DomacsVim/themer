@@ -719,8 +719,6 @@ M.setup = function(config)
     used_palette = M.ristretto
   elseif config.style == 'soda' then
     used_palette = M.soda
-  else
-    used_palette = M.classic
   end
   config = vim.tbl_extend("force", config, default_config or {})
   vim.g.colors_name = used_palette.name
