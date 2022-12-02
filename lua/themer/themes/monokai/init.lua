@@ -698,7 +698,6 @@ end
 
 local default_config = {
   style = 'classic',-- 'classic', 'pro', 'ristretto', 'soda'
-  palette = M.classic,
   custom_hlgroups = {},
   italics = true,
 }
