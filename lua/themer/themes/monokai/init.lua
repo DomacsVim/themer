@@ -724,7 +724,7 @@ M.setup = function(config)
     used_palette = M.classic
   end
   if config then
-    config = vim.tbl_deep_extend('force', config, default_config)
+    config = vim.tbl_deep_extend("force", default_config, config)
   end
   vim.g.colors_name = used_palette.name
   local syntax = M.load_syntax(used_palette)
