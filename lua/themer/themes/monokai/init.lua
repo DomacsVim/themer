@@ -711,9 +711,10 @@ M.setup = function(config)
   end
   vim.o.background = 'dark'
   vim.o.termguicolors = true
-  M.config = vim.tbl_deep_extend("force", default_config, config)
-  local used_palette = config.style
-  vim.g.colors_name = 'monokai'
+  config = config or {}
+  config = vim.tbl_deep_extend('force', config, default_config)
+  local used_palette = config.palette or M.classic
+  vim.g.colors_name = used_palette.name
   local syntax = M.load_syntax(used_palette)
   syntax = vim.tbl_deep_extend('keep', config.custom_hlgroups, syntax)
   local highlight = highlighter(config)
