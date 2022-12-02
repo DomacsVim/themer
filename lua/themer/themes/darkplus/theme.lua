@@ -1,4 +1,4 @@
-local c = require 'themer.themes.darkplus.colors'
+local c = require 'themer.themes.darkplus.palette'
 local config = require 'themer.themes.darkplus.config'
 
 local M = {}
