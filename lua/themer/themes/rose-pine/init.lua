@@ -1,4 +1,4 @@
-local util = require('rose-pine.util')
+local util = require('themer.themes.rose-pine.util')
 
 local M = {}
 
@@ -72,7 +72,7 @@ function M.colorscheme()
 	vim.opt.termguicolors = true
 	vim.g.colors_name = 'rose-pine'
 
-	local theme = require('rose-pine.theme').get(config)
+	local theme = require('themer.themes.rose-pine.theme').get(config)
 
 	-- Set theme highlights
 	for group, color in pairs(theme) do
