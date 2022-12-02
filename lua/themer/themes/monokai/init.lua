@@ -711,7 +711,7 @@ M.setup = function(config)
   end
   vim.o.background = 'dark'
   vim.o.termguicolors = true
-  M.config = vim.tbl_deep_extend('keep', config, default_config)
+  M.config = vim.tbl_deep_extend("force", default_config, config)
   local used_palette = config.style
   vim.g.colors_name = used_palette.name
   local syntax = M.load_syntax(used_palette)
