@@ -1,5 +1,5 @@
 local util = require("themer.themes.tokyonight.util")
-local colors = require("themer.themes.tokyonight.palette")
+local colors = require("themer.themes.tokyonight.colors")
 
 local M = {}
 --
