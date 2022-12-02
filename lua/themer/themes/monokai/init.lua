@@ -711,6 +711,8 @@ M.setup = function(config)
     config.style = M.ristretto
   elseif config.style == 'soda' then
     config.style = M.soda
+  else
+    config.style = M.classic
   end
   vim.cmd('hi clear')
   if vim.fn.exists('syntax_on') then
