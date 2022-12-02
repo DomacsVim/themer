@@ -697,18 +697,12 @@ M.load_plugin_syntax = function(palette)
 end
 
 local default_config = {
+  style = 'classic',
   custom_hlgroups = {},
   italics = true,
 }
 
 M.setup = function(config)
-  vim.cmd('hi clear')
-  if vim.fn.exists('syntax_on') then
-    vim.cmd('syntax reset')
-  end
-  vim.o.background = 'dark'
-  vim.o.termguicolors = true
-  config = vim.tbl_deep_extend('keep', config or {}, default_config)
   if config.style == 'classic' then
     config.style = M.classic
   elseif config.style == 'pro' then
@@ -718,7 +712,14 @@ M.setup = function(config)
   elseif config.style == 'soda' then
     config.style = M.soda
   end
-  local used_palette = config.style or M.classic
+  vim.cmd('hi clear')
+  if vim.fn.exists('syntax_on') then
+    vim.cmd('syntax reset')
+  end
+  vim.o.background = 'dark'
+  vim.o.termguicolors = true
+  config = vim.tbl_extend('keep', config, default_config)
+  local used_palette = config.style
   vim.g.colors_name = 'monokai'
   local syntax = M.load_syntax(used_palette)
   syntax = vim.tbl_deep_extend('keep', config.custom_hlgroups, syntax)
