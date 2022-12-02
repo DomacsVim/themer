@@ -710,6 +710,7 @@ M.setup = function(config)
   vim.o.background = 'dark'
   vim.o.termguicolors = true
   config = config or {}
+  config = vim.tbl_deep_extend('keep', config, default_config)
   local used_palette
   if config.style == 'classic' then
     used_palette = M.classic
@@ -722,7 +723,9 @@ M.setup = function(config)
   else
     used_palette = M.classic
   end
-  config = vim.tbl_deep_extend('keep', config, default_config)
+  if config then
+    config = vim.tbl_deep_extend('force', config, default_config)
+  end
   vim.g.colors_name = used_palette.name
   local syntax = M.load_syntax(used_palette)
   syntax = vim.tbl_deep_extend('keep', config.custom_hlgroups, syntax)
