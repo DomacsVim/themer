@@ -711,7 +711,17 @@ M.setup = function(config)
   vim.o.termguicolors = true
   config = config or {}
   config = vim.tbl_deep_extend('keep', config, default_config)
-  local used_palette = config.style or M.classic
+  local style
+  if config.style == 'classic' then
+    style = M.classic
+  elseif config.style == 'pro' then
+    style = M.pro
+  elseif config.style == 'ristretto' then
+    style = M.ristretto
+  elseif config.style == 'soda' then
+    style = M.soda
+  end
+  local used_palette = style or M.classic
   vim.g.colors_name = used_palette.name
   local syntax = M.load_syntax(used_palette)
   syntax = vim.tbl_deep_extend('keep', config.custom_hlgroups, syntax)
