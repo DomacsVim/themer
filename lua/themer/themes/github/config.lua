@@ -1,5 +1,5 @@
-local vim_config = require('themer.themes.github-theme.config.vim_config')
-local default_config = require('themer.themes.github-theme.config.default')
+local vim_config = require('themer.themes.github.config.vim_config')
+local default_config = require('themer.themes.github.config.default')
 
 ---@class gt.Config
 ---@field schema gt.ConfigSchema

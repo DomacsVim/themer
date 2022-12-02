@@ -1,6 +1,6 @@
-local colors = require('themer.themes.github-theme.colors')
-local types = require('themer.themes.github-theme.types')
-local util = require('themer.themes.github-theme.util')
+local colors = require('themer.themes.github.colors')
+local types = require('themer.themes.github.types')
+local util = require('themer.themes.github.util')
 
 ---@class gt.Theme
 local theme = {}

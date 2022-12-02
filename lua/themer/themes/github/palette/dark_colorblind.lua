@@ -1,5 +1,5 @@
-local util = require('themer.themes.github-theme.util')
-local dark_default_palette = require('themer.themes.github-theme.palette.dark_default')
+local util = require('themer.themes.github.util')
+local dark_default_palette = require('themer.themes.github.palette.dark_default')
 
 return function()
   ---@type gt.ColorPalette

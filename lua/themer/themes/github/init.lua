@@ -1,6 +1,6 @@
-local config = require('themer.themes.github-theme.config')
-local theme = require('themer.themes.github-theme.theme')
-local util = require('themer.themes.github-theme.util')
+local config = require('themer.themes.github.config')
+local theme = require('themer.themes.github.theme')
+local util = require('themer.themes.github.util')
 
 ---@class gt.Init
 local init = {}

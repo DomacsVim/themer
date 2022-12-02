@@ -1,5 +1,5 @@
-local palette = require('themer.themes.github-theme.palette')
-local util = require('themer.themes.github-theme.util')
+local palette = require('themer.themes.github.palette')
+local util = require('themer.themes.github.util')
 
 ---@class gt.Colors
 local colors = {}

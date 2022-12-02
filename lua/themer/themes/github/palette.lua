@@ -7,7 +7,7 @@ palette.get_palette = function(theme_style)
   ---@type gt.ColorPalette
   local p
 
-  p = require('themer.themes.github-theme.palette.' .. theme_style)()
+  p = require('themer.themes.github.palette.' .. theme_style)()
   p.none = 'NONE'
   return p
 end

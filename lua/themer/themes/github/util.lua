@@ -1,4 +1,4 @@
-local types = require('themer.themes.github-theme.types')
+local types = require('themer.themes.github.types')
 
 ---@class gt.Util
 local util = {}
