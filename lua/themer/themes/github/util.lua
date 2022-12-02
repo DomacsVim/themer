@@ -173,7 +173,7 @@ util.load = function(hi)
   util.apply_overrides(hi.base, overrides, hi.config.dev)
   util.apply_overrides(hi.plugins, overrides, hi.config.dev)
 
-  local autocmds = require('themer.themes.github-theme.autocmds')
+  local autocmds = require('themer.themes.github.autocmds')
   --Load ColorScheme
   util.syntax(hi.base)
   autocmds.set(hi.config, util.colors_name)
