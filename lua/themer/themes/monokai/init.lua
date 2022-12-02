@@ -697,7 +697,7 @@ M.load_plugin_syntax = function(palette)
 end
 
 local default_config = {
-  style = 'classic',-- 'classic', 'pro', 'ristretto', 'soda'
+  style = 'ristretto',-- 'classic', 'pro', 'ristretto', 'soda'
   custom_hlgroups = {},
   italics = true,
 }
