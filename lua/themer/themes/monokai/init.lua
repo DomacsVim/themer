@@ -709,8 +709,10 @@ M.setup = function(config)
   end
   vim.o.background = 'dark'
   vim.o.termguicolors = true
-  config = config or {}
-  config = vim.tbl_deep_extend('keep', config, default_config)
+  config = vim.tbl_deep_extend('keep', config or {}, default_config)
+  if config then
+    config = vim.tbl_deep_extend('force', config, config)
+  end
   local style
   if config.style == 'classic' then
     style = M.classic
