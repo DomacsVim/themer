@@ -260,7 +260,7 @@ local function setup(configs)
 
       -- NvimTree
       NvimTreeNormal = { fg = colors.fg, bg = colors.menu, },
-      NvimTreeVertSplit = { fg = colors.bg, bg = colors.bg, },
+      NvimTreeVertSplit = { fg = colors.black },
       NvimTreeRootFolder = { fg = colors.fg, bold = true, },
       NvimTreeGitDirty = { fg = colors.yellow, },
       NvimTreeGitNew = { fg = colors.bright_green, },
