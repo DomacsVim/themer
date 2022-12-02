@@ -15,6 +15,17 @@ use {
 }
 ````
 
+## List of the Themes
+* **Darkplus**
+* **Dracula**
+* **GitHub**
+* **Gruvbox**
+* **Horizon**
+* **Monokai**
+* **Onedark**
+* **RosePine**
+* **tokyonight**
+
 ## API
 require themer :
 
