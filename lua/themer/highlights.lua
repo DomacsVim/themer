@@ -851,14 +851,14 @@ M.defaults = {
   StatusLinePythonVenv = {fg = theme.base0A, bg = theme.base00},
 
   -- Bufferline
-  Debuging = {fg = theme.base08, bg = theme.base00},
-  GitPull = {fg = theme.base0D, bg = theme.base00},
-  GitCommit = {fg = theme.base0B, bg = theme.base00},
-  GitPush = {fg = theme.base0B, bg = theme.base00},
-  BufSep = {fg = theme.base00, bg = theme.base00},
-  BufBg = {fg = theme.base08, bg = theme.base00},
-  BufFilll = {bg = theme.base00},
-  BufFill = {fg = theme.base07, bg = theme.base00},
+  Debuging = {fg = theme.base08, bg = theme.base02},
+  GitPull = {fg = theme.base0D, bg = theme.base02},
+  GitCommit = {fg = theme.base0B, bg = theme.base02},
+  GitPush = {fg = theme.base0B, bg = theme.base02},
+  BufSep = {fg = theme.base00, bg = theme.base02},
+  BufBg = {fg = theme.base07, bg = theme.base02},
+  BufFilll = {bg = theme.base02},
+  BufFill = {fg = theme.base07, bg = theme.base02},
   PanelHeading = {fg = theme.base06, bg = theme.base00},
 }
 
