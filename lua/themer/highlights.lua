@@ -384,9 +384,9 @@ M.defaults = {
   -- Illuminate
   illuminatedWord                            = { bg = theme.base03 },
   illuminatedCurWord                         = { bg = theme.base03 },
-  IlluminatedWordText                        = { bg = theme.base03, underline = true },
-  IlluminatedWordRead                        = { bg = theme.base03, underline = true },
-  IlluminatedWordWrite                       = { bg = theme.base03, underline = true },
+  IlluminatedWordText                        = { bg = theme.base03 },
+  IlluminatedWordRead                        = { bg = theme.base03 },
+  IlluminatedWordWrite                       = { bg = theme.base03 },
 
   -- diff
   diffAdded                                  = { fg = theme.base0B },
