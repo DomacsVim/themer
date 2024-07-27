@@ -67,8 +67,8 @@ M.defaults = {
   TabLineFill                                = { bg = theme.base00 },                                 -- tab pages line, where there are no labels
   TabLineSel                                 = { fg = theme.base00, bg = theme.base0D },              -- tab pages line, active tab page label
   Title                                      = { fg = theme.base0A, bold = true },                    -- titles for output from ":set all", ":autocmd" etc.
-  Visual                                     = { bg = theme.base03 },                                 -- Visual mode selection
-  VisualNOS                                  = { bg = theme.base00 },                                 -- Visual mode selection when vim is "Not Owning the Selection".
+  Visual                                     = { bg = theme.base02 },                                 -- Visual mode selection
+  VisualNOS                                  = { bg = theme.base02 },                                 -- Visual mode selection when vim is "Not Owning the Selection".
   WarningMsg                                 = { fg = theme.base0A },                                 -- warning messages
   Whitespace                                 = { fg = theme.base05 },                                 -- "nbsp", "space", "tab" and "trail" in 'listchars'
   WildMenu                                   = { bg = theme.base00 },                                 -- current match in 'wildmenu' completion
